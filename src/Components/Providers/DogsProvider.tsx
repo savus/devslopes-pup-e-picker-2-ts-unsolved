@@ -39,6 +39,18 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
+  const updateDog = (id: number, body: Partial<Dog>) => {
+    setAllDogs(
+      allDogs.map((dog) => (dog.id === id ? { ...dog, ...body } : dog))
+    );
+
+    return Requests.patchFavoriteForDog(id, { ...body }).then((response) => {
+      if (!response.ok) {
+        setAllDogs(allDogs);
+      } else return;
+    });
+  };
+
   useEffect(() => {
     refetchData();
   }, []);

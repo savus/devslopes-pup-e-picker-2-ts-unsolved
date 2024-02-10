@@ -5,11 +5,16 @@ const endPoint = "dogs";
 
 export const Requests = {
   getAllDogs: (): Promise<Dog[]> =>
+    //pessimistic rendering
     fetch(`${BASE_URL}/${endPoint}`).then((response) => response.json()),
 
-  postDog: () => {
-    // fill out method
-  },
+  postDog: (body: Omit<Dog, "id">) =>
+    fetch(`${BASE_URL}/${endPoint}`, {
+      //pessimistic rendering
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => response.json()),
 
   deleteDogRequest: (id: number): Promise<Response> =>
     //optimistic rendering
