@@ -18,6 +18,9 @@ type TDogsProvider = {
   numOfFavorited: number;
   numOfUnfavorited: number;
   isLoading: boolean;
+  postDog: (body: Omit<Dog, "id">) => Promise<string | void>;
+  updateDog: (id: number, body: Partial<Dog>) => Promise<void>;
+  deleteDog: (id: number) => Promise<void>;
 };
 
 const DogsContext = createContext({} as TDogsProvider);
@@ -30,6 +33,7 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
   let numOfUnfavorited = 0;
 
   const refetchData = () => {
+    //pessimistic rendering
     setIsLoading(true);
     return Requests.getAllDogs()
       .then(setAllDogs)
@@ -39,12 +43,40 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
+  const postDog = (body: Omit<Dog, "id">) => {
+    //pessimistic rendering
+    setIsLoading(true);
+    return Requests.postDog(body)
+      .then(() => {
+        toast.success("Dog Created!");
+      })
+      .then(refetchData)
+      .catch(() => {
+        toast.error(serverErrorMessage);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   const updateDog = (id: number, body: Partial<Dog>) => {
+    //optimistic rendering
     setAllDogs(
       allDogs.map((dog) => (dog.id === id ? { ...dog, ...body } : dog))
     );
 
     return Requests.patchFavoriteForDog(id, { ...body }).then((response) => {
+      if (!response.ok) {
+        setAllDogs(allDogs);
+      } else return;
+    });
+  };
+
+  const deleteDog = (id: number) => {
+    //optimistic rendering
+    setAllDogs(allDogs.filter((dog) => dog.id !== id));
+
+    return Requests.deleteDogRequest(id).then((response) => {
       if (!response.ok) {
         setAllDogs(allDogs);
       } else return;
@@ -77,6 +109,9 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
         numOfFavorited,
         numOfUnfavorited,
         isLoading,
+        postDog,
+        updateDog,
+        deleteDog,
       }}
     >
       {children}
