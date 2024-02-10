@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
+import { useActiveTabState } from "./Providers/ActiveTabProvider";
 
 export const CreateDogForm = () =>
   // no props allowed
   {
     const [selectedImage, setSelectedImage] = useState(dogPictures.BlueHeeler);
+    const { activeTabState } = useActiveTabState();
 
-    return (
+    return activeTabState === "create-dog" ? (
       <form
         action=""
         id="create-dog-form"
@@ -36,5 +38,7 @@ export const CreateDogForm = () =>
         </select>
         <input type="submit" value="submit" />
       </form>
+    ) : (
+      <></>
     );
   };

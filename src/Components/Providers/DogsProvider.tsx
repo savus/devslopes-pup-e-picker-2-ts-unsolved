@@ -44,19 +44,16 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const filteredDogs = allDogs.filter((dog) => {
+    dog.isFavorite ? numOfFavorited++ : numOfUnfavorited++;
     switch (activeTabState) {
       case "all-dogs":
         return true;
       case "create-dog":
         return false;
-      case "favorited": {
-        numOfFavorited++;
+      case "favorited":
         return dog.isFavorite;
-      }
-      case "unfavorited": {
-        numOfUnfavorited++;
+      case "unfavorited":
         return !dog.isFavorite;
-      }
     }
   });
 

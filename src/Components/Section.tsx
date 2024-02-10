@@ -1,4 +1,7 @@
 import { ReactNode } from "react";
+import { useDogs } from "./Providers/DogsProvider";
+import { useActiveTabState } from "./Providers/ActiveTabProvider";
+import { TActiveTabState } from "../types";
 
 export const Section = ({
   label,
@@ -8,6 +11,10 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
+  const { numOfFavorited, numOfUnfavorited } = useDogs();
+  const { activeTabState, setActiveTabState } = useActiveTabState();
+  const isLinkActive = (tabState: TActiveTabState) =>
+    activeTabState === tabState ? "active" : "";
   return (
     <section id="main-section">
       <div className="container-header">
@@ -15,27 +22,33 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${"active"}`}
+            className={`selector ${isLinkActive("favorited")}`}
             onClick={() => {
-              alert("click favorited");
+              activeTabState === "favorited"
+                ? setActiveTabState("all-dogs")
+                : setActiveTabState("favorited");
             }}
           >
-            favorited ( {0} )
+            favorited ( {numOfFavorited} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${""}`}
+            className={`selector ${isLinkActive("unfavorited")}`}
             onClick={() => {
-              alert("click unfavorited");
+              activeTabState === "unfavorited"
+                ? setActiveTabState("all-dogs")
+                : setActiveTabState("unfavorited");
             }}
           >
-            unfavorited ( {10} )
+            unfavorited ( {numOfUnfavorited} )
           </div>
           <div
-            className={`selector ${""}`}
+            className={`selector ${isLinkActive("create-dog")}`}
             onClick={() => {
-              alert("clicked create dog");
+              activeTabState === "create-dog"
+                ? setActiveTabState("all-dogs")
+                : setActiveTabState("create-dog");
             }}
           >
             create dog

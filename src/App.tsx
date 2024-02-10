@@ -10,14 +10,14 @@ export function App() {
       <header>
         <h1>pup-e-picker (Functional)</h1>
       </header>
-      <Section label={"Dogs: "}>
-        <ActiveTabProvider>
-          <DogsProvider>
+      <ActiveTabProvider>
+        <DogsProvider>
+          <Section label={"Dogs: "}>
             <Dogs />
-          </DogsProvider>
-        </ActiveTabProvider>
-        <CreateDogForm />
-      </Section>
+            <CreateDogForm />
+          </Section>
+        </DogsProvider>
+      </ActiveTabProvider>
     </div>
   );
 }
