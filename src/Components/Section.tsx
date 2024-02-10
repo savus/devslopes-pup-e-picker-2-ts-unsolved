@@ -13,7 +13,7 @@ export const Section = ({
 }) => {
   const { numOfFavorited, numOfUnfavorited } = useDogs();
   const { activeTabState, setActiveTabState } = useActiveTabState();
-  const isLinkActive = (tabState: TActiveTabState) =>
+  const isLinkActive = (tabState: TActiveTabState): "active" | "" =>
     activeTabState === tabState ? "active" : "";
   return (
     <section id="main-section">
