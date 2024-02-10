@@ -9,3 +9,9 @@ export const dogSchema = z.object({
 });
 
 export type Dog = z.infer<typeof dogSchema>;
+
+export type TActiveTabState =
+  | "all-dogs"
+  | "favorited"
+  | "unfavorited"
+  | "create-dog";

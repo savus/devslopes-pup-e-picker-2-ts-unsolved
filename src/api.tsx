@@ -1,21 +1,19 @@
-const getAllDogs = () => {
-  // fill out method
-};
-
-const postDog = () => {
-  // fill out method
-};
-const deleteDogRequest = () => {
-  // fill out method
-};
-
-const patchFavoriteForDog = () => {
-  // fill out method
-};
+const BASE_URL = "http://localhost:3000";
+const endPoint = "dogs";
 
 export const Requests = {
-  postDog,
-  deleteDogRequest,
-  patchFavoriteForDog,
-  getAllDogs,
+  getAllDogs: () =>
+    fetch(`${BASE_URL}/${endPoint}`).then((response) => response.json()),
+
+  postDog: () => {
+    // fill out method
+  },
+
+  deleteDogRequest: () => {
+    // fill out method
+  },
+
+  patchFavoriteForDog: () => {
+    // fill out method
+  },
 };
