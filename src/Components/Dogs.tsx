@@ -7,7 +7,7 @@ import { useDogs } from "./Providers/DogsProvider";
 export const Dogs = () =>
   // no props allowed
   {
-    const { filteredDogs, isLoading } = useDogs();
+    const { filteredDogs, isLoading, updateDog, deleteDog } = useDogs();
     return (
       //  the "<> </>"" are called react fragments, it's like adding all the html inside
       // without adding an actual html element
@@ -17,9 +17,15 @@ export const Dogs = () =>
             key={dog.id}
             dog={dog}
             isLoading={isLoading}
-            onEmptyHeartClick={() => console.log("clicked")}
-            onHeartClick={() => console.log("clicked")}
-            onTrashIconClick={() => console.log("clicked")}
+            onEmptyHeartClick={() => {
+              updateDog(dog.id, { isFavorite: true });
+            }}
+            onHeartClick={() => {
+              updateDog(dog.id, { isFavorite: false });
+            }}
+            onTrashIconClick={() => {
+              deleteDog(dog.id);
+            }}
           />
         ))}
       </>
