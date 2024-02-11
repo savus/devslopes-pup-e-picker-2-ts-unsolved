@@ -9,6 +9,7 @@ import { Dog } from "../../types";
 import { Requests } from "../../api";
 import toast from "react-hot-toast";
 import { useActiveTabState } from "./ActiveTabProvider";
+import { useLoadingState } from "./LoadingStateProvider";
 
 const serverErrorMessage = "Oops...something went wrong";
 
@@ -17,7 +18,6 @@ type TDogsProvider = {
   filteredDogs: Dog[];
   numOfFavorited: number;
   numOfUnfavorited: number;
-  isLoading: boolean;
   postDog: (body: Omit<Dog, "id">) => Promise<string | void>;
   updateDog: (id: number, body: Partial<Dog>) => Promise<void>;
   deleteDog: (id: number) => Promise<void>;
@@ -27,8 +27,8 @@ const DogsContext = createContext({} as TDogsProvider);
 
 export const DogsProvider = ({ children }: { children: ReactNode }) => {
   const { activeTabState } = useActiveTabState();
+  const { setIsLoading } = useLoadingState();
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   let numOfFavorited = 0;
   let numOfUnfavorited = 0;
 
@@ -108,7 +108,6 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
         filteredDogs,
         numOfFavorited,
         numOfUnfavorited,
-        isLoading,
         postDog,
         updateDog,
         deleteDog,

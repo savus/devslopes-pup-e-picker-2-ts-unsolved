@@ -2,12 +2,14 @@
 
 import { DogCard } from "./DogCard";
 import { useDogs } from "./Providers/DogsProvider";
+import { useLoadingState } from "./Providers/LoadingStateProvider";
 
 // Todo: Refactor to get rid of props (THERE SHOULD BE NO PROPS DRILLING ON THIS COMPONENT)
 export const Dogs = () =>
   // no props allowed
   {
-    const { filteredDogs, isLoading, updateDog, deleteDog } = useDogs();
+    const { filteredDogs, updateDog, deleteDog } = useDogs();
+    const { isLoading } = useLoadingState();
     return (
       //  the "<> </>"" are called react fragments, it's like adding all the html inside
       // without adding an actual html element
