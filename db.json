@@ -1,67 +1,46 @@
 {
   "dogs": [
     {
-      "name": "Nicolas",
-      "image": "/src/assets/chihuahua.avif",
-      "description": "an Savings brink transmit card",
-      "isFavorite": true,
-      "id": 9
-    },
-    {
-      "name": "Art",
-      "image": "/src/assets/blue-heeler.png",
-      "description": "Global ha Genderflux payment Metal pixel Money",
-      "isFavorite": true,
-      "id": 12
-    },
-    {
-      "name": "Sebastian",
-      "image": "/src/assets/boxer.png",
-      "description": "Associate Gasoline Savings Hybrid Developer",
-      "isFavorite": true,
-      "id": 13
-    },
-    {
-      "name": "Lambert",
-      "image": "/src/assets/chihuahua.avif",
-      "description": "drive reek Marvin compress executive Coordinator Track bluetooth",
+      "name": "Kelsie",
+      "image": "/assets/boxer.png",
+      "description": "Idaho Chief Diesel West Diesel Ara SAS volt",
       "isFavorite": false,
-      "id": 14
+      "id": 8
     },
     {
-      "name": "Kris",
-      "image": "/src/assets/blue-heeler.png",
-      "description": "Beryllium Chevrolet partnerships focus Southeast Poland salmon",
-      "isFavorite": true,
+      "name": "Imani",
+      "image": "/assets/dalmation.png",
+      "description": "Islands invoice Mongolia Neutrois West Movies Gloves",
+      "isFavorite": false,
       "id": 15
     },
     {
-      "name": "Trudie",
-      "image": "/src/assets/boxer.png",
-      "description": "connecting blue National Movies Interactions ack Tandem Shirt",
-      "isFavorite": false,
+      "name": "Timothy",
+      "image": "/assets/blue-heeler.png",
+      "description": "Pickup Implementation radian Russian SUV tan Home",
+      "isFavorite": true,
       "id": 16
     },
     {
-      "name": "Meaghan",
-      "image": "/src/assets/dalmation.png",
-      "description": "lux Manager North applications Rufiyaa",
-      "isFavorite": false,
+      "name": "Madison",
+      "image": "/assets/dalmation.png",
+      "description": "Paradigm application Bronze Moscovium female",
+      "isFavorite": true,
       "id": 17
     },
     {
-      "name": "Vallie",
-      "image": "/src/assets/chihuahua.avif",
-      "description": "Lead synergistic noisy operating Passenger female Salad Rubber",
+      "name": "Ulices",
+      "image": "/assets/dalmation.png",
+      "description": "Road XML Kids payment Bahamas Togo magenta mechanically",
       "isFavorite": true,
       "id": 18
     },
     {
-      "name": "Newton",
-      "image": "/src/assets/blue-heeler.png",
-      "description": "Planner maxime invoice ROI granular ouch Franc",
+      "name": "",
+      "description": "",
+      "image": "/assets/boxer.jpeg",
       "isFavorite": true,
-      "id": 19
+      "id": 20
     }
   ]
 }
