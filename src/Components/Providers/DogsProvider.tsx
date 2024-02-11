@@ -11,8 +11,6 @@ import toast from "react-hot-toast";
 import { useActiveTabState } from "./ActiveTabProvider";
 import { useLoadingState } from "./LoadingStateProvider";
 
-const serverErrorMessage = "Oops...something went wrong";
-
 type TDogsProvider = {
   allDogs: Dog[];
   filteredDogs: Dog[];
@@ -37,7 +35,7 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
     return Requests.getAllDogs()
       .then(setAllDogs)
-      .catch(() => toast.error(serverErrorMessage))
+      .catch(() => toast.error("Oops...something went wrong"))
       .finally(() => {
         setIsLoading(false);
       });

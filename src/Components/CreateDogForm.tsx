@@ -39,7 +39,7 @@ export const CreateDogForm = () =>
               resetValues();
             })
             .catch(() => {
-              toast.error("oops...something went wrong");
+              toast.error("Oops...something went wrong");
             });
         }}
       >
