@@ -49,10 +49,7 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
     return Requests.postDog(body)
       .then(() => {
         toast.success("Dog Created!");
-      })
-      .then(refetchData)
-      .catch(() => {
-        toast.error(serverErrorMessage);
+        return refetchData();
       })
       .finally(() => {
         setIsLoading(false);

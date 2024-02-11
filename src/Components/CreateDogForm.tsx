@@ -3,6 +3,7 @@ import { dogPictures } from "../dog-pictures";
 import { useActiveTabState } from "./Providers/ActiveTabProvider";
 import { useDogs } from "./Providers/DogsProvider";
 import { useLoadingState } from "./Providers/LoadingStateProvider";
+import toast from "react-hot-toast";
 
 const defaultSelectedImage = dogPictures.BlueHeeler;
 
@@ -33,9 +34,13 @@ export const CreateDogForm = () =>
             description: dogDescriptionInput,
             image: selectedImage,
             isFavorite: false,
-          }).then(() => {
-            resetValues();
-          });
+          })
+            .then(() => {
+              resetValues();
+            })
+            .catch(() => {
+              toast.error("oops...something went wrong");
+            });
         }}
       >
         <h4>Create a New Dog</h4>
