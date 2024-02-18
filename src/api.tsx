@@ -16,17 +16,29 @@ export const Requests = {
       headers: { "Content-Type": "application/json" },
     }).then((response) => response.json()),
 
-  deleteDogRequest: (id: number): Promise<Response> =>
+  deleteDogRequest: (id: number): Promise<unknown> =>
     //optimistic rendering
     fetch(`${BASE_URL}/${endPoint}/${id}`, {
       method: "DELETE",
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`Could not delete dog ${id}`);
+      } else {
+        return response.json();
+      }
     }),
 
-  patchFavoriteForDog: (id: number, body: Partial<Dog>): Promise<Response> =>
+  patchFavoriteForDog: (id: number, body: Partial<Dog>): Promise<unknown> =>
     //optimistic rendering
     fetch(`${BASE_URL}/${endPoint}/${id}`, {
       method: "PATCH",
       body: JSON.stringify(body),
       headers: { "Content-Type": "application/json" },
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`Could not patch dog ${id}`);
+      } else {
+        return response.json();
+      }
     }),
 };

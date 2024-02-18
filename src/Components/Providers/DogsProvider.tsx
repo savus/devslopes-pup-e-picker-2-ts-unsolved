@@ -9,14 +9,16 @@ import { Dog, TActiveTabState } from "../../types";
 import { Requests } from "../../api";
 import toast from "react-hot-toast";
 
+const serverErrorMessage = "Oops...something went wrong";
+
 type TDogsProvider = {
   allDogs: Dog[];
   filteredDogs: Dog[];
   numOfFavorited: number;
   numOfUnfavorited: number;
   postDog: (body: Omit<Dog, "id">) => Promise<string | void>;
-  updateDog: (id: number, body: Partial<Dog>) => Promise<void>;
-  deleteDog: (id: number) => Promise<void>;
+  updateDog: (id: number, body: Partial<Dog>) => Promise<unknown>;
+  deleteDog: (id: number) => Promise<unknown>;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
   activeTabState: TActiveTabState;
@@ -37,7 +39,7 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
     return Requests.getAllDogs()
       .then(setAllDogs)
-      .catch(() => toast.error("Oops...something went wrong"))
+      .catch(() => toast.error(serverErrorMessage))
       .finally(() => {
         setIsLoading(false);
       });
@@ -47,9 +49,12 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
     //pessimistic rendering
     setIsLoading(true);
     return Requests.postDog(body)
+      .then(refetchData)
       .then(() => {
         toast.success("Dog Created!");
-        return refetchData();
+      })
+      .catch(() => {
+        toast.error(serverErrorMessage);
       })
       .finally(() => {
         setIsLoading(false);
@@ -62,10 +67,9 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
       allDogs.map((dog) => (dog.id === id ? { ...dog, ...body } : dog))
     );
 
-    return Requests.patchFavoriteForDog(id, { ...body }).then((response) => {
-      if (!response.ok) {
-        setAllDogs(allDogs);
-      } else return;
+    return Requests.patchFavoriteForDog(id, { ...body }).catch(() => {
+      toast.error(serverErrorMessage);
+      setAllDogs(allDogs);
     });
   };
 
@@ -73,10 +77,9 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
     //optimistic rendering
     setAllDogs(allDogs.filter((dog) => dog.id !== id));
 
-    return Requests.deleteDogRequest(id).then((response) => {
-      if (!response.ok) {
-        setAllDogs(allDogs);
-      } else return;
+    return Requests.deleteDogRequest(id).catch(() => {
+      toast.error(serverErrorMessage);
+      setAllDogs(allDogs);
     });
   };
 

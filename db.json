@@ -1,1 +1,88 @@
-{"dogs":[{"name":"Patsy","image":"/assets/boxer.png","description":"Folk like mollitia taxicab Northeast West Berkshire furthermore","isFavorite":false,"id":0},{"name":"Kenneth","image":"/assets/cowardly.png","description":"Berkshire Regional Agent Southwest nisi Fermium Developer","isFavorite":true,"id":1},{"name":"Monty","image":"/assets/chihuahua.avif","description":"hearty navigate drive indeed Genderflux after Division Buckinghamshire","isFavorite":true,"id":2},{"name":"Franz","image":"/assets/blue-heeler.png","description":"now Sleek TCP Functionality tempora Cambridgeshire JBOD","isFavorite":true,"id":3},{"name":"Adeline","image":"/assets/blue-heeler.png","description":"Frozen fuchsia Taiwan Senior deserted clogs Bespoke","isFavorite":false,"id":4},{"name":"Pearl","image":"/assets/dalmation.png","description":"Southwest asynchronous Folding siemens though Northeast properly","isFavorite":true,"id":5},{"name":"Russell","image":"/assets/dalmation.png","description":"South South salmon South Switchable Hip yet","isFavorite":true,"id":6},{"name":"Sonny","image":"/assets/chihuahua.avif","description":"Recycled Administrator West shimmering RAM person Distributed ivory","isFavorite":true,"id":7},{"name":"Derick","image":"/assets/dalmation.png","description":"Southeast heuristic Account data Ports","isFavorite":true,"id":8},{"name":"Aisha","image":"/assets/chihuahua.avif","description":"considering visionary once Connecticut Southeast cohere Manager","isFavorite":false,"id":9},{"name":"Cruz","image":"/assets/boxer.png","description":"Brand Steel impactful withdrawal World Berkshire feed Ireland","isFavorite":false,"id":10},{"name":"Danyka","image":"/assets/dalmation.png","description":"Account vertical calculate Operations Bike over Electronics","isFavorite":true,"id":11},{"name":"Trevion","image":"/assets/boxer.png","description":"synthesize Hybrid card Specialist Granite Jewelery Southeast","isFavorite":false,"id":12},{"name":"Lucious","image":"/assets/blue-heeler.png","description":"Grenada sabotage Beauty kelvin Berkshire","isFavorite":false,"id":13},{"name":"Lamar","image":"/assets/boxer.png","description":"sinful Iron modulo Account cautiously","isFavorite":false,"id":14},{"name":"Giovanni","image":"/assets/dalmation.png","description":"male magenta Northeast monitor person relay Data Engineer","isFavorite":false,"id":15},{"name":"Augusta","image":"/assets/corgi.png","description":"why South Soft Credit Metal Sports Cadillac","isFavorite":false,"id":16},{"name":"Jose","image":"/assets/cowardly.png","description":"Senegal Paradigm Metal Androgyne Applications","isFavorite":false,"id":17},{"name":"Issac","image":"/assets/chihuahua.avif","description":"Bedfordshire Mercedes Producer Data Handcrafted","isFavorite":false,"id":18},{"name":"Jamey","image":"/assets/boxer.png","description":"capability Walks Southeast Oxygen Extended complex whose","isFavorite":true,"id":19}]}
+{
+  "dogs": [
+    {
+      "name": "Aisha",
+      "image": "/assets/chihuahua.avif",
+      "description": "considering visionary once Connecticut Southeast cohere Manager",
+      "isFavorite": false,
+      "id": 9
+    },
+    {
+      "name": "Cruz",
+      "image": "/assets/boxer.png",
+      "description": "Brand Steel impactful withdrawal World Berkshire feed Ireland",
+      "isFavorite": false,
+      "id": 10
+    },
+    {
+      "name": "Danyka",
+      "image": "/assets/dalmation.png",
+      "description": "Account vertical calculate Operations Bike over Electronics",
+      "isFavorite": true,
+      "id": 11
+    },
+    {
+      "name": "Trevion",
+      "image": "/assets/boxer.png",
+      "description": "synthesize Hybrid card Specialist Granite Jewelery Southeast",
+      "isFavorite": true,
+      "id": 12
+    },
+    {
+      "name": "Lucious",
+      "image": "/assets/blue-heeler.png",
+      "description": "Grenada sabotage Beauty kelvin Berkshire",
+      "isFavorite": true,
+      "id": 13
+    },
+    {
+      "name": "Lamar",
+      "image": "/assets/boxer.png",
+      "description": "sinful Iron modulo Account cautiously",
+      "isFavorite": false,
+      "id": 14
+    },
+    {
+      "name": "Giovanni",
+      "image": "/assets/dalmation.png",
+      "description": "male magenta Northeast monitor person relay Data Engineer",
+      "isFavorite": false,
+      "id": 15
+    },
+    {
+      "name": "Augusta",
+      "image": "/assets/corgi.png",
+      "description": "why South Soft Credit Metal Sports Cadillac",
+      "isFavorite": false,
+      "id": 16
+    },
+    {
+      "name": "Jose",
+      "image": "/assets/cowardly.png",
+      "description": "Senegal Paradigm Metal Androgyne Applications",
+      "isFavorite": false,
+      "id": 17
+    },
+    {
+      "name": "Issac",
+      "image": "/assets/chihuahua.avif",
+      "description": "Bedfordshire Mercedes Producer Data Handcrafted",
+      "isFavorite": false,
+      "id": 18
+    },
+    {
+      "name": "Jamey",
+      "image": "/assets/boxer.png",
+      "description": "capability Walks Southeast Oxygen Extended complex whose",
+      "isFavorite": true,
+      "id": 19
+    },
+    {
+      "name": "asdf",
+      "description": "asdfwe",
+      "image": "/assets/boxer.jpeg",
+      "isFavorite": false,
+      "id": 20
+    }
+  ]
+}
