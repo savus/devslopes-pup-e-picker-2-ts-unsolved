@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
-import { useActiveTabState } from "./Providers/ActiveTabProvider";
 import { useDogs } from "./Providers/DogsProvider";
-import { useLoadingState } from "./Providers/LoadingStateProvider";
 import toast from "react-hot-toast";
 
 const defaultSelectedImage = dogPictures.BlueHeeler;
@@ -11,11 +9,10 @@ export const CreateDogForm = () =>
   // no props allowed
   {
     const [selectedImage, setSelectedImage] = useState(defaultSelectedImage);
-    const { activeTabState } = useActiveTabState();
+    const { activeTabState, isLoading } = useDogs();
     const [dogNameInput, setDogNameInput] = useState("");
     const [dogDescriptionInput, setDogDescriptionInput] = useState("");
     const { postDog } = useDogs();
-    const { isLoading } = useLoadingState();
 
     const resetValues = () => {
       setDogNameInput("");

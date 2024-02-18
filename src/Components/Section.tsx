@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { useDogs } from "./Providers/DogsProvider";
-import { useActiveTabState } from "./Providers/ActiveTabProvider";
 import { TActiveTabState } from "../types";
 
 export const Section = ({
@@ -11,8 +10,12 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-  const { numOfFavorited, numOfUnfavorited } = useDogs();
-  const { activeTabState, setActiveTabState } = useActiveTabState();
+  const {
+    numOfFavorited,
+    numOfUnfavorited,
+    activeTabState,
+    setActiveTabState,
+  } = useDogs();
   const isLinkActive = (tabState: TActiveTabState): "active" | "" =>
     activeTabState === tabState ? "active" : "";
   return (

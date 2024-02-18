@@ -5,11 +5,9 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Dog } from "../../types";
+import { Dog, TActiveTabState } from "../../types";
 import { Requests } from "../../api";
 import toast from "react-hot-toast";
-import { useActiveTabState } from "./ActiveTabProvider";
-import { useLoadingState } from "./LoadingStateProvider";
 
 type TDogsProvider = {
   allDogs: Dog[];
@@ -19,16 +17,20 @@ type TDogsProvider = {
   postDog: (body: Omit<Dog, "id">) => Promise<string | void>;
   updateDog: (id: number, body: Partial<Dog>) => Promise<void>;
   deleteDog: (id: number) => Promise<void>;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
+  activeTabState: TActiveTabState;
+  setActiveTabState: (activeTabState: TActiveTabState) => void;
 };
 
 const DogsContext = createContext({} as TDogsProvider);
 
 export const DogsProvider = ({ children }: { children: ReactNode }) => {
-  const { activeTabState } = useActiveTabState();
-  const { setIsLoading } = useLoadingState();
+  const [activeTabState, setActiveTabState] =
+    useState<TActiveTabState>("all-dogs");
+  const [isLoading, setIsLoading] = useState(false);
+
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
-  let numOfFavorited = 0;
-  let numOfUnfavorited = 0;
 
   const refetchData = () => {
     //pessimistic rendering
@@ -78,23 +80,39 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const buildDogData = (activeTabState: TActiveTabState, allDogs: Dog[]) => {
+    let numOfFavorited = 0;
+    let numOfUnfavorited = 0;
+
+    const filteredDogs = allDogs.filter((dog) => {
+      dog.isFavorite ? numOfFavorited++ : numOfUnfavorited++;
+      switch (activeTabState) {
+        case "all-dogs":
+          return true;
+        case "create-dog":
+          return false;
+        case "favorited":
+          return dog.isFavorite;
+        case "unfavorited":
+          return !dog.isFavorite;
+      }
+    });
+
+    return {
+      filteredDogs,
+      numOfFavorited,
+      numOfUnfavorited,
+    };
+  };
+
   useEffect(() => {
     refetchData();
   }, []);
 
-  const filteredDogs = allDogs.filter((dog) => {
-    dog.isFavorite ? numOfFavorited++ : numOfUnfavorited++;
-    switch (activeTabState) {
-      case "all-dogs":
-        return true;
-      case "create-dog":
-        return false;
-      case "favorited":
-        return dog.isFavorite;
-      case "unfavorited":
-        return !dog.isFavorite;
-    }
-  });
+  const { filteredDogs, numOfFavorited, numOfUnfavorited } = buildDogData(
+    activeTabState,
+    allDogs
+  );
 
   return (
     <DogsContext.Provider
@@ -106,6 +124,10 @@ export const DogsProvider = ({ children }: { children: ReactNode }) => {
         postDog,
         updateDog,
         deleteDog,
+        isLoading,
+        setIsLoading,
+        activeTabState,
+        setActiveTabState,
       }}
     >
       {children}
