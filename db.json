@@ -8,24 +8,10 @@
       "id": 9
     },
     {
-      "name": "Cruz",
-      "image": "/assets/boxer.png",
-      "description": "Brand Steel impactful withdrawal World Berkshire feed Ireland",
-      "isFavorite": false,
-      "id": 10
-    },
-    {
-      "name": "Danyka",
-      "image": "/assets/dalmation.png",
-      "description": "Account vertical calculate Operations Bike over Electronics",
-      "isFavorite": true,
-      "id": 11
-    },
-    {
       "name": "Trevion",
       "image": "/assets/boxer.png",
       "description": "synthesize Hybrid card Specialist Granite Jewelery Southeast",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 12
     },
     {
